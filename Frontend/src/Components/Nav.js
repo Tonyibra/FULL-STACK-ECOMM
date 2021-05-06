@@ -1,5 +1,7 @@
 import React from "react";
 import { Input, Button } from "@material-ui/core";
+import PersonIcon from "@material-ui/icons/Person";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import "../Styles/Nav.scss";
 const Nav = () => {
 	return (
@@ -9,11 +11,7 @@ const Nav = () => {
 					<strong>TWITT</strong>
 				</div>
 				<div className="search-bar">
-					<Input
-						color="secondary"
-						autoFocus="true"
-						placeholder="Search for products"
-					/>
+					<Input color="secondary" placeholder="Search for products" />
 					<Button variant="outlined" color="secondary">
 						Search
 					</Button>
@@ -21,8 +19,14 @@ const Nav = () => {
 			</div>
 			<div className="nav-right">
 				<ul>
-					<li>Cart</li>
-					<li>Sign out</li>
+					<li>
+						<ShoppingCartIcon />
+						<span>Cart</span>
+					</li>
+					<li>
+						<PersonIcon />
+						<span>Sign out</span>
+					</li>
 				</ul>
 			</div>
 		</nav>

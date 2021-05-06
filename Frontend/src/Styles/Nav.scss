@@ -38,8 +38,11 @@ $oxygen: "Oxygen", sans-serif;
 			list-style-type: none;
 
 			li {
+				display: flex;
 				margin: 0rem 1.75rem;
 				cursor: pointer;
+				align-items: center;
+				justify-content: center;
 			}
 		}
 	}

@@ -9,7 +9,7 @@ const Slick = () => {
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		// autoplay: true,
+		autoplay: true,
 	};
 
 	return (
@@ -30,7 +30,7 @@ const Slick = () => {
 						<div className="title">
 							Iphone 12 <span className="slick-price">(999$)</span>
 						</div>
-						<div div className="img">
+						<div className="img">
 							<img src="/imgs/iphone-12.png" />
 						</div>
 					</div>
@@ -40,7 +40,7 @@ const Slick = () => {
 						<div className="title">
 							Iphone 12 <span className="slick-price">(999$)</span>
 						</div>
-						<div div className="img">
+						<div className="img">
 							<img src="/imgs/iphone-12.png" />
 						</div>
 					</div>
