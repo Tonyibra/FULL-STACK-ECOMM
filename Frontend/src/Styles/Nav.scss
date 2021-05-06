@@ -1,0 +1,48 @@
+$oxygen: "Oxygen", sans-serif;
+.nav-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 9vh;
+	padding: 0.5rem calc(2.5vw + 5px);
+	background-color: #24202e;
+	color: #fff;
+	font-family: $oxygen;
+	.nav-left {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		.logo {
+			margin-right: calc(4vw + 5px);
+			font-family: $oxygen;
+			letter-spacing: 3px;
+		}
+		.search-bar input {
+			margin-right: 2rem;
+			color: #fff;
+		}
+		::placeholder {
+			color: white;
+			font-size: 12px;
+			line-height: 26px;
+		}
+		.search-bar button {
+			margin-left: 1rem;
+			color: white;
+		}
+	}
+	.nav-right {
+		ul {
+			display: flex;
+			list-style-type: none;
+
+			li {
+				margin: 0rem 1.75rem;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+@import "./HomePage";
