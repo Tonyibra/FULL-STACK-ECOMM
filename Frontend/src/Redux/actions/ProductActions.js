@@ -9,9 +9,9 @@ export const getProducts = () => async (dispatch) => {
 	try {
 		const getProductUrl = "http://localhost:5000/products";
 		dispatch({ type: GET_PRODUCT_REQUEST });
-		const { res } = await axios.get(getProductUrl);
-		dispatch({ type: GET_PRODUCT_SUCCESS, payload: res.data });
-	} catch (error) {
-		dispatch({ type: GET_PRODUCT_FAIL });
+		const { data } = await axios.get(getProductUrl);
+		dispatch({ type: GET_PRODUCT_SUCCESS, payload: data });
+	} catch (err) {
+		dispatch({ type: GET_PRODUCT_FAIL, payload: err });
 	}
 };

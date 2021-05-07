@@ -32,6 +32,7 @@ $oxygen: "Oxygen", sans-serif;
 			color: white;
 		}
 	}
+
 	.nav-right {
 		ul {
 			display: flex;
@@ -45,6 +46,10 @@ $oxygen: "Oxygen", sans-serif;
 				justify-content: center;
 			}
 		}
+	}
+	a {
+		color: #fff;
+		text-decoration: none;
 	}
 }
 

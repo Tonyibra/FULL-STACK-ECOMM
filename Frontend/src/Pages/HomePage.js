@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Slick from "../Components/Slick";
 import "../Styles/Slider.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getProducts } from "../Redux/actions/ProductActions";
 const HomePage = () => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getProducts());
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div className="home-container">

@@ -21,7 +21,7 @@ const Slick = () => {
 							Iphone 12 <span className="slick-price">(999$)</span>
 						</div>
 						<div className="img">
-							<img src="/imgs/iphone-12.png" />
+							<img src="/imgs/iphone-12.png" alt="" />
 						</div>
 					</div>
 				</div>
@@ -31,7 +31,7 @@ const Slick = () => {
 							Iphone 12 <span className="slick-price">(999$)</span>
 						</div>
 						<div className="img">
-							<img src="/imgs/iphone-12.png" />
+							<img src="/imgs/iphone-12.png" alt="" />
 						</div>
 					</div>
 				</div>
@@ -41,7 +41,7 @@ const Slick = () => {
 							Iphone 12 <span className="slick-price">(999$)</span>
 						</div>
 						<div className="img">
-							<img src="/imgs/iphone-12.png" />
+							<img src="/imgs/iphone-12.png" alt="" />
 						</div>
 					</div>
 				</div>
