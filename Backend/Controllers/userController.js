@@ -1,6 +1,6 @@
 const User = require("../Models/UsersModel");
 const jwt = require("jsonwebtoken");
-
+const bcrypt = require("bcrypt");
 exports.registerUser = async (req, res, next) => {
 	const user = {
 		email: req.body.email,
@@ -28,7 +28,52 @@ exports.registerUser = async (req, res, next) => {
 		console.log(error);
 	}
 };
+
+exports.login = async (req, res, next) => {
+	const user = {
+		email: req.body.email,
+		password: req.body.password,
+	};
+
+	try {
+		const dbUser = await User.findOne({ email: user.email });
+
+		if (!dbUser) {
+			res.json("No account with this Email Address");
+		}
+
+		if (req.body.email === dbUser.email) {
+			const hash = dbUser.password;
+			bcrypt.compare(user.password, hash, function (err, result) {
+				if (err) next();
+				if (result) {
+					generateLogToken(dbUser, res);
+				} else {
+					console.log("Cant login");
+				}
+				next();
+			});
+		}
+	} catch (error) {
+		console.log("Error " + error);
+	}
+};
+
+exports.getById = async (req, res, next) => {
+	const findUser = await User.findById(req.params.id);
+
+	if (findUser) {
+		res.json(findUser);
+	} else {
+		res.json("No Account Related for this id");
+	}
+};
+
 const generateRegToken = (regUser, res) => {
 	const token = regUser.getSignedToken();
 	res.json({ message: "success", token, regUser });
+};
+const generateLogToken = (dbUser, res) => {
+	const token = dbUser.getSignedToken();
+	res.json({ message: "success", token, dbUser });
 };

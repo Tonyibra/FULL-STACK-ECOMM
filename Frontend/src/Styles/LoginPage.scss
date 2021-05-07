@@ -1,0 +1,56 @@
+$oxygen: "Oxygen", sans-serif;
+
+.login-container {
+	width: 100%;
+	height: calc(100vh - 9vh);
+	position: relative;
+	top: 9vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	font-family: $oxygen;
+	background-color: #dedee8;
+	color: #000;
+	.login-card {
+		height: 50vh;
+		width: 50vh;
+		border-radius: 16px;
+		background-color: #8ec5fc;
+		background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		.card-header {
+			display: flex;
+			flex-direction: column;
+			strong {
+				padding-bottom: 1rem;
+				font-size: 22px;
+				letter-spacing: 0.3px;
+				text-align: center;
+			}
+			a {
+				color: #c51162;
+			}
+			padding-bottom: 2rem;
+		}
+		.inputs {
+			display: flex;
+			flex-direction: column;
+
+			.input {
+				margin-bottom: 0.7rem;
+			}
+		}
+	}
+	.card-body {
+		width: 90%;
+		margin: 0 auto;
+	}
+	.login-btn {
+		width: 90%;
+		margin: 1rem auto;
+	}
+}

@@ -1,3 +1,14 @@
+//Product Variables
 export const GET_PRODUCT_REQUEST = "GET_PRODUCT_REQUEST";
 export const GET_PRODUCT_SUCCESS = "GET_PRODUCT_SUCCESS";
 export const GET_PRODUCT_FAIL = "GET_PRODUCT_FAIL";
+
+//LoginVariables
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const LOGIN_REQUEST_SUCCESS = "LOGIN_REQUEST_SUCCESS";
+export const LOGIN_REQUEST_FAIL = "LOGIN_REQUEST_FAIL";
+
+//token user info
+export const TOKEN_INFO_REQUEST = "LOGIN_REQUEST";
+export const TOKEN_INFO_SUCCESS = "LOGIN_REQUEST_SUCCESS";
+export const TOKEN_INFO_FAIL = "LOGIN_REQUEST_FAIL";
