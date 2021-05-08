@@ -3,13 +3,14 @@ import { Input, Button } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getTokenInfo } from "../Redux/actions/userActions";
+import { deleteState } from "../Redux/actions/userActions";
 import "../Styles/Nav.scss";
 const Nav = () => {
 	const histroy = useHistory();
-	const [isAdmin, setAdmin] = useState(false);
+
 	const selector = useSelector((state) => state.tokenInfo.UserTokenInfo);
 	const dispatch = useDispatch();
 	const parseJwt = (token) => {
@@ -19,23 +20,11 @@ const Nav = () => {
 			return null;
 		}
 	};
-	const getUser = () => {
-		let userToken = localStorage.getItem("token");
-		const id = parseJwt(userToken).id;
-		dispatch(getTokenInfo(id));
-	};
-	const signOutUser = (e) => {
-		localStorage.removeItem("token");
+
+	const signOutUser = () => {
+		dispatch(deleteState());
 		histroy.push("/");
 	};
-
-	useEffect(() => {
-		try {
-			getUser();
-		} catch (error) {
-			console.log(error);
-		}
-	});
 
 	return (
 		<nav className="nav-container">
@@ -54,23 +43,39 @@ const Nav = () => {
 			<div className="nav-right">
 				<ul className="main-ul">
 					{selector.isAdmin ? (
-						<li>
-							<SupervisorAccountIcon />
-							<span>Admin</span>
+						<li className="main-list">
+							<div className="dropdown-ico">
+								<SupervisorAccountIcon fontSize="small" />
+								<span>Admin</span>
+							</div>
 						</li>
 					) : (
-						""
+						<Link to="/login">
+							<li className="main-list">
+								<PersonIcon fontSize="small" />
+								<span>Log in</span>
+							</li>
+						</Link>
 					)}
 					<Link to="/cart">
 						<li className="main-list">
-							<ShoppingCartIcon />
-							<span>Cart</span>
+							<div className="dropdown-ico">
+								<ShoppingCartIcon className="drop-ico" fontSize="small" />
+								<span>Cart</span>
+							</div>
 						</li>
 					</Link>
 					{Object.keys(selector).length > 0 ? (
 						<div className="dropdown">
 							<div className="name">
-								{selector.username ? <span>{selector.username}</span> : " "}
+								{selector.username ? (
+									<div className="dropdown-ico">
+										<ArrowDropDownIcon className="drop-ico" />
+										<span>{selector.username}</span>
+									</div>
+								) : (
+									""
+								)}
 							</div>
 							<div className="dropdown-menu">
 								<Link to="/profile">Profile</Link>
@@ -80,12 +85,7 @@ const Nav = () => {
 							</div>
 						</div>
 					) : (
-						<Link to="/login">
-							<li className="main-list">
-								<PersonIcon />
-								<span>Log in</span>
-							</li>
-						</Link>
+						""
 					)}
 				</ul>
 			</div>

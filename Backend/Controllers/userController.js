@@ -23,7 +23,7 @@ exports.registerUser = async (req, res, next) => {
 
 		const registerUser = await newUser.save();
 		// res.json(registerUser);
-		generateToken(registerUser, res);
+		generateRegToken(registerUser, res);
 	} catch (error) {
 		console.log(error);
 	}
@@ -60,12 +60,14 @@ exports.login = async (req, res, next) => {
 };
 
 exports.getById = async (req, res, next) => {
-	const findUser = await User.findById(req.params.id);
-
-	if (findUser) {
-		res.json(findUser);
-	} else {
-		res.json("No Account Related for this id");
+	const id = req.params.id;
+	try {
+		const user = await User.findById(id);
+		res.send(user);
+		console.log(user);
+		next();
+	} catch (error) {
+		res.send({ message: error.message });
 	}
 };
 

@@ -15,6 +15,7 @@ const LoginPage = () => {
 	const [email, setEmail] = useState("");
 	const [Password, setPassword] = useState("");
 	const [token, setToken] = useState("");
+
 	//function
 	const getUserName = (e) => {
 		setEmail(e.target.value);
@@ -25,7 +26,10 @@ const LoginPage = () => {
 
 	const loginHandler = (e) => {
 		e.preventDefault();
+
 		dispatch(loginActions(email, Password));
+		setEmail("");
+		setPassword("");
 		setToken(localStorage.getItem("token"));
 		if (token) {
 			history.push("/");
@@ -37,6 +41,8 @@ const LoginPage = () => {
 		if (localStorage.getItem("token")) {
 			setToken(localStorage.getItem("token"));
 			history.push("/");
+		} else {
+			return;
 		}
 	}, [{ data }]);
 

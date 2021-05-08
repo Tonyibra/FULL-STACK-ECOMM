@@ -7,5 +7,6 @@ const {
 //register User
 router.route("/register").post(registerUser);
 router.route("/login").post(login);
-router.route("/Users/:id").get(getById);
+router.route("/user/:id").get(getById);
+
 module.exports = router;

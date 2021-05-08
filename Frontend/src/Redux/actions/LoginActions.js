@@ -9,11 +9,10 @@ export const loginActions = (email, password) => async (dispatch) => {
 	const url = "http://localhost:5000/login";
 	try {
 		dispatch({ type: LOGIN_REQUEST });
-		const res = await axios.post(url, { email, password });
-		dispatch({ type: LOGIN_REQUEST_SUCCESS, payload: res.data });
-		//SAVE TOKEN
-		console.log(res.data);
-		localStorage.setItem("token", res.data.token);
+		const { data } = await axios.post(url, { email, password });
+		console.log(data);
+		dispatch({ type: LOGIN_REQUEST_SUCCESS, payload: data });
+		localStorage.setItem("token", data.token);
 	} catch (error) {
 		dispatch({ type: LOGIN_REQUEST_FAIL });
 	}

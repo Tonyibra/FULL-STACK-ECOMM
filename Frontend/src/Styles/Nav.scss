@@ -4,16 +4,10 @@ $oxygen: "Oxygen", sans-serif;
 	justify-content: space-between;
 	align-items: center;
 	height: 9vh;
-	padding: 0.5rem calc(2.5vw + 5px);
+	padding: 0 calc(2.6vw + 5px);
 	background-color: #24202e;
 	color: #fff;
 	font-family: $oxygen;
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	bottom: 0px;
-	z-index: 300; //navbars
 
 	// dropDown
 	.dropdown {
@@ -28,6 +22,17 @@ $oxygen: "Oxygen", sans-serif;
 				display: block;
 			}
 		}
+		.dropdown-ico {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			cursor: pointer;
+		}
+	}
+	.drop-ico {
+		width: 25px;
+		height: 20px;
 	}
 	.dropdown {
 		position: relative;
@@ -36,7 +41,7 @@ $oxygen: "Oxygen", sans-serif;
 	.dropdown-menu {
 		display: none;
 		position: absolute;
-		top: 25px;
+		top: 20px;
 		right: 0;
 		background-color: #f1f1f1;
 		min-width: 160px;
@@ -87,6 +92,9 @@ $oxygen: "Oxygen", sans-serif;
 		ul {
 			display: flex;
 			list-style-type: none;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
 
 			li {
 				display: flex;

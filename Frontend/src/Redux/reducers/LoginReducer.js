@@ -10,8 +10,9 @@ export const loginReducer = (state = initState, action) => {
 			return { ...state };
 		case LOGIN_REQUEST_SUCCESS:
 			return { ...state, Login: action.payload };
+
 		case LOGIN_REQUEST_FAIL:
-			return { ...state };
+			return state;
 
 		default:
 			return state;

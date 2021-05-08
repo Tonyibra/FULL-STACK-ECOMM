@@ -7,6 +7,7 @@ const mongodb = require("./Config/db");
 const ProductRoute = require("./Routes/ProductRoute");
 const UserRoutes = require("./Routes/userRoutes");
 const ProfileRoutes = require("./Routes/ProfileRoute");
+
 //mongodb
 mongodb();
 app.use(express.json());
@@ -19,6 +20,7 @@ const User = UserRoutes;
 app.use("/", User);
 const Profile = ProfileRoutes;
 app.use("/profile", Profile);
+
 app.listen(process.env.PORT, () => {
 	console.log(`Server is running on port ${process.env.PORT}`);
 });
