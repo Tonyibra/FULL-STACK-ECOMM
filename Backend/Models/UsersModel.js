@@ -75,7 +75,10 @@ userSchema.methods.comparePassword = function (next) {
 	});
 };
 userSchema.methods.getSignedToken = function () {
-	return jwt.sign({ id: this._id }, process.env.SECRET_KEY);
+	return jwt.sign(
+		{ id: this._id, isAdmin: this.isAdmin },
+		process.env.SECRET_KEY
+	);
 };
 
 module.exports = mongoose.model("User", userSchema);

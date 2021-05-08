@@ -1,3 +1,5 @@
+$oxygen: "Oxygen", sans-serif;
+
 .product-list-flex {
 	display: flex;
 	flex-direction: row;
@@ -6,5 +8,11 @@
 
 	h2 {
 		color: #24202e;
+	}
+}
+.product-list {
+	h2 {
+		padding-top: calc(3vw + 15px);
+		font-family: $oxygen;
 	}
 }

@@ -7,11 +7,13 @@ import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteState } from "../Redux/actions/userActions";
+import { getTokenData } from "../util";
 import "../Styles/Nav.scss";
 const Nav = () => {
 	const histroy = useHistory();
 
 	const selector = useSelector((state) => state.tokenInfo.UserTokenInfo);
+
 	const dispatch = useDispatch();
 	const parseJwt = (token) => {
 		try {
@@ -20,17 +22,31 @@ const Nav = () => {
 			return null;
 		}
 	};
+	const getUser = () => {
+		if (localStorage.getItem("token")) {
+			let userToken = localStorage.getItem("token");
+			const id = parseJwt(userToken).id;
+			dispatch(getTokenData(id));
+		} else {
+			console.log("not authorized");
+		}
+	};
 
 	const signOutUser = () => {
 		dispatch(deleteState());
 		histroy.push("/");
 	};
-
+	useEffect(() => {
+		getUser();
+	}, [selector.dbUser]);
+	console.log(selector);
 	return (
 		<nav className="nav-container">
 			<div className="nav-left">
 				<div className="logo">
-					<strong>TWITT</strong>
+					<Link to="/">
+						<strong>TWITT</strong>
+					</Link>
 				</div>
 				<div className="search-bar">
 					<Input color="secondary" placeholder="Search for products" />
@@ -46,7 +62,7 @@ const Nav = () => {
 						<li className="main-list">
 							<div className="dropdown-ico">
 								<SupervisorAccountIcon fontSize="small" />
-								<span>Admin</span>
+								<Link to="/admin">Admin</Link>
 							</div>
 						</li>
 					) : (
