@@ -1,4 +1,5 @@
 const express = require("express");
+const expressfileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 const app = express();
 const env = require("dotenv").config();
@@ -10,7 +11,9 @@ const ProfileRoutes = require("./Routes/ProfileRoute");
 
 //mongodb
 mongodb();
+app.use(expressfileUpload());
 app.use(express.json());
+
 app.use(cors());
 app.options("*", cors());
 //routes

@@ -6,7 +6,7 @@ import "./App.css";
 import LoginPage from "./Pages/LoginPage";
 import AdminPage from "./Pages/AdminPage";
 import PrivateRoute from "./routing/PrivateRoute ";
-import createProduct from "./Pages/createProduct";
+import CreateProduct from "./Pages/CreateProduct";
 import { notFoundRoute } from "./util";
 function App() {
 	const location = useLocation();
@@ -19,9 +19,9 @@ function App() {
 			<Switch location={location} key={location.key}>
 				<PrivateRoute path="/admin" exact={true} component={AdminPage} />
 				<PrivateRoute
-					path="/createProduct"
+					path="/CreateProduct"
 					exact={true}
-					component={createProduct}
+					component={CreateProduct}
 				/>
 				<Route path="/" component={HomePage} exact />
 				<Route path="/login" component={LoginPage} exact />

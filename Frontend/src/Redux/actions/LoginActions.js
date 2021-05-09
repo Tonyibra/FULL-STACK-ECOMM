@@ -10,7 +10,6 @@ export const loginActions = (email, password) => async (dispatch) => {
 	try {
 		dispatch({ type: LOGIN_REQUEST });
 		const { data } = await axios.post(url, { email, password });
-		console.log(data);
 		dispatch({ type: LOGIN_REQUEST_SUCCESS, payload: data });
 		localStorage.setItem("token", data.token);
 	} catch (error) {
