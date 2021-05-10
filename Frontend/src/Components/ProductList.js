@@ -3,7 +3,7 @@ import "../Styles/ProductList.scss";
 import ProductCard from "./ProductCard";
 import { useSelector } from "react-redux";
 import Loading from "./Loading";
-const ProductList = ({ currency, setCurrency }) => {
+const ProductList = ({ currency, setCurrency, lbpRate }) => {
 	const selector = useSelector((state) => state.ProductsData.Products);
 	return (
 		<div className="product-list">
@@ -12,6 +12,7 @@ const ProductList = ({ currency, setCurrency }) => {
 				{selector.length > 0 ? (
 					selector.map((product, index) => (
 						<ProductCard
+							lbpRate={lbpRate}
 							currency={currency}
 							product={product}
 							index={index}

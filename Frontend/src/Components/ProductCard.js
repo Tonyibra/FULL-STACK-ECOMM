@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "../Styles/ProductCard.scss";
 import { Button } from "@material-ui/core";
 import { stars, foramtLBPRates } from "../util";
-const ProductCard = ({ product, currency }) => {
-	const [lbpRate, setLbpRate] = useState(12400);
+const ProductCard = ({ product, currency, lbpRate }) => {
 	stars(product.Rating);
 	console.log(stars());
 	return (

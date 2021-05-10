@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "../Styles/Slider.scss";
 import { useSelector } from "react-redux";
-import { FeaturedProducts } from "../util";
+import { FeaturedProducts, foramtLBPRates } from "../util";
 import Loading from "./Loading";
 import SlickList from "./SlickList";
 
-const Slick = () => {
-	const [currency, setCurrency] = useState("$");
+const Slick = ({ currency, setCurrency, lbpRate }) => {
 	const selector = useSelector((state) => state.ProductsData.Products);
 	const length = Object.keys(selector).length - 1;
 	const settings = {
@@ -36,7 +35,12 @@ const Slick = () => {
 									<div className="title">{selector[length].productName}</div>
 									<div className="price">
 										<span className="slick-price">
-											Price :{`${selector[length].price}${currency}`}
+											Price :
+											{currency === "LBP"
+												? `${foramtLBPRates(
+														`${selector[length].price * lbpRate}`
+												  )}${currency}`
+												: `${selector[length].price}${currency}`}
 										</span>
 									</div>
 								</div>
@@ -56,7 +60,12 @@ const Slick = () => {
 									</div>
 									<div className="price">
 										<span className="slick-price">
-											Price : {`${selector[length - 1].price}${currency}`}
+											Price :
+											{currency === "LBP"
+												? `${foramtLBPRates(
+														`${selector[length - 1].price * lbpRate}`
+												  )}${currency}`
+												: `${selector[length - 1].price}${currency}`}
 										</span>
 									</div>
 								</div>

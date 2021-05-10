@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Slick from "../Components/Slick";
 import ProductList from "../Components/ProductList";
 import "../Styles/Slider.scss";
@@ -9,14 +9,19 @@ import { FeaturedProducts } from "../util";
 const HomePage = ({ currency, setCurrency }) => {
 	const selector = useSelector((state) => state.ProductsData.Products);
 	const dispatch = useDispatch();
+	const [lbpRate, setLbpRate] = useState(12400);
 	useEffect(() => {
 		dispatch(getProducts());
 	}, []);
 	FeaturedProducts(selector);
 	return (
 		<div className="home-container">
-			<Slick />
-			<ProductList currency={currency} setCurrency={setCurrency} />
+			<Slick lbpRate={lbpRate} currency={currency} setCurrency={setCurrency} />
+			<ProductList
+				lbpRate={lbpRate}
+				currency={currency}
+				setCurrency={setCurrency}
+			/>
 		</div>
 	);
 };
