@@ -1,5 +1,6 @@
 import { getTokenInfo } from "./Redux/actions/userActions";
 import OneStar from "./reviews/one.png";
+import numeral from "numeral";
 const parseJwt = (token) => {
 	try {
 		return JSON.parse(atob(token.split(".")[1]));
@@ -27,4 +28,9 @@ export const stars = (rating) => {
 };
 export const FeaturedProducts = (products) => {
 	return Object.keys(products).length;
+};
+
+export const foramtLBPRates = (rate) => {
+	const lbpFormatter = numeral(rate).format("0,0");
+	return lbpFormatter;
 };

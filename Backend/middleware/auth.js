@@ -6,9 +6,9 @@ exports.verifyToken = async (req, res, next) => {
 
 	if (
 		req.headers.authorization &&
-		req.headers.authorization.starsWith("Bearer")
+		req.headers.authorization.startsWith("Bearer")
 	) {
-		token = req.header.authorization.splite("")[1];
+		token = req.headers.authorization.split("Bearer ")[1];
 	}
 
 	if (!token) {
@@ -18,11 +18,11 @@ exports.verifyToken = async (req, res, next) => {
 	try {
 		const decoded = jwt.verify(token, process.env.SECRET_KEY);
 		const user = await User.findById(decoded.id);
-
 		if (!user) {
 			res.json("Token Not Valid");
 		}
-		req.user = user;
+
+		req.user = User;
 		next();
 	} catch (error) {
 		console.log(error);

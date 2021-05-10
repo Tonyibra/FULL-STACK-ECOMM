@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "../Styles/CreateProduct.scss";
 import { uploadProducts, uploadImage } from "../Redux/actions/UploadProducts";
 
@@ -9,6 +10,7 @@ import axios from "axios";
 const CreateProduct = () => {
 	const selector = useSelector((state) => state.IMGS);
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const [product, setProduct] = useState(" ");
 	const [brand, setBrand] = useState(" ");
 	const [category, setCategory] = useState(" ");
@@ -65,6 +67,9 @@ const CreateProduct = () => {
 			console.log(err);
 		}
 	};
+	const backbtnHandler = () => {
+		history.push("/");
+	};
 	const submitData = (e) => {
 		e.preventDefault();
 		try {
@@ -90,12 +95,20 @@ const CreateProduct = () => {
 				)
 			);
 		}
+		reset();
 	};
 
 	return (
 		<div className="addProduct-container">
 			<div className="title">
-				<strong>Add Product</strong>
+				<div className="product">
+					<strong>Add Product</strong>
+				</div>
+				<div className="back-btn">
+					<Button onClick={backbtnHandler} variant="contained" color="primary">
+						Back
+					</Button>
+				</div>
 			</div>
 			<div className="product-top">
 				<div className="product-name">

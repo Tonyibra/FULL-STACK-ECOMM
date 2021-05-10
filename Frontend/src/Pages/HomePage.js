@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../Redux/actions/ProductActions";
 import { loginActions } from "../Redux/actions/LoginActions";
 import { FeaturedProducts } from "../util";
-const HomePage = () => {
+const HomePage = ({ currency, setCurrency }) => {
 	const selector = useSelector((state) => state.ProductsData.Products);
 	const dispatch = useDispatch();
 	useEffect(() => {
@@ -16,7 +16,7 @@ const HomePage = () => {
 	return (
 		<div className="home-container">
 			<Slick />
-			<ProductList />
+			<ProductList currency={currency} setCurrency={setCurrency} />
 		</div>
 	);
 };

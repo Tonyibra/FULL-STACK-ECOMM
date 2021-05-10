@@ -15,3 +15,12 @@ export const getProducts = () => async (dispatch) => {
 		dispatch({ type: GET_PRODUCT_FAIL, payload: err });
 	}
 };
+export const deleteProducts = (id) => async (dispatch) => {
+	const deleteURl = `http://localhost:5000/products/delete/${id}`;
+
+	try {
+		const deleteProductHandler = await axios.delete(deleteURl);
+	} catch (error) {
+		console.log(error);
+	}
+};

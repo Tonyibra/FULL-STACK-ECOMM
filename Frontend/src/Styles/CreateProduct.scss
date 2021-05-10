@@ -5,7 +5,8 @@ $oxygen: "Oxygen", sans-serif;
 	.title {
 		height: 10vh;
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+		justify-content: center;
 		padding: 0 calc(3vw + 15px);
 		font-family: $oxygen;
 		font-size: 32px;

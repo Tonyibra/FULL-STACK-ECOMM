@@ -20,19 +20,29 @@ export const uploadProducts = (
 	price
 ) => async (dispatch) => {
 	const getProductUrl = "http://localhost:5000/products";
+	const token = localStorage.getItem("token");
+	let config = {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	};
 	try {
 		dispatch({ type: PRODUCT_UPLOAD_REQUEST });
-		const res = await axios.post(getProductUrl, {
-			productName,
-			Image,
-			description,
-			category,
-			brand,
-			numReviews,
-			Rating,
-			countInStock,
-			price,
-		});
+		const res = await axios.post(
+			getProductUrl,
+			{
+				productName,
+				Image,
+				description,
+				category,
+				brand,
+				numReviews,
+				Rating,
+				countInStock,
+				price,
+			},
+			config
+		);
 		dispatch({ type: PRODUCT_UPLOAD_SUCCESS, payload: res });
 	} catch (err) {
 		dispatch({ type: PRODUCT_UPLOAD_FAIL, payload: err });
@@ -41,6 +51,7 @@ export const uploadProducts = (
 export const uploadImage = (file) => (dispatch) => {
 	const url = "http://localhost:5000/products/upload";
 	const formData = new FormData();
+	const token = localStorage.getItem("token");
 	formData.append("file", file);
 	try {
 		dispatch({ type: IMAGE_UPLOAD_REQ });
@@ -48,6 +59,7 @@ export const uploadImage = (file) => (dispatch) => {
 			.post(url, formData, {
 				headers: {
 					"Content-Type": "multipart/form-data",
+					Authorization: `Bearer ${token}`,
 				},
 			})
 			.then((data) => {

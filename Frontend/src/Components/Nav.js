@@ -2,14 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Input, Button } from "@material-ui/core";
 import PersonIcon from "@material-ui/icons/Person";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { Select } from "@material-ui/core";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteState } from "../Redux/actions/userActions";
 import { getTokenData } from "../util";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+
 import "../Styles/Nav.scss";
-const Nav = () => {
+const Nav = ({ currency, setCurrency }) => {
+	const [open, setOpen] = React.useState(false);
 	const histroy = useHistory();
 
 	const selector = useSelector((state) => state.tokenInfo.UserTokenInfo);
@@ -39,7 +44,18 @@ const Nav = () => {
 	useEffect(() => {
 		getUser();
 	}, [selector.dbUser]);
-	console.log(selector);
+	const handleChange = (event) => {
+		setCurrency(event.target.value);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+	};
+
+	const handleOpen = () => {
+		setOpen(true);
+	};
+
 	return (
 		<nav className="nav-container">
 			<div className="nav-left">
@@ -53,6 +69,24 @@ const Nav = () => {
 					<Button variant="outlined" color="secondary">
 						Search
 					</Button>
+					<div className="currency-option">
+						<Select
+							labelId="demo-controlled-open-select-label"
+							id="demo-controlled-open-select"
+							open={open}
+							onClose={handleClose}
+							onOpen={handleOpen}
+							value={currency}
+							onChange={handleChange}
+						>
+							<MenuItem className="menu-item" value={"USD"}>
+								USD
+							</MenuItem>
+							<MenuItem className="menu-item" value={"LBP"}>
+								Lebanese Pound
+							</MenuItem>
+						</Select>
+					</div>
 				</div>
 			</div>
 

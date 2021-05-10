@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "./Components/Nav";
 import HomePage from "./Pages/HomePage";
 import { Switch, Route, useLocation } from "react-router-dom";
@@ -9,12 +9,13 @@ import PrivateRoute from "./routing/PrivateRoute ";
 import CreateProduct from "./Pages/CreateProduct";
 import { notFoundRoute } from "./util";
 function App() {
+	const [currency, setCurrency] = useState("USD");
 	const location = useLocation();
 	const NoMatch = ({ location }) => <h3>404 PAGE NOT FOUND</h3>;
 	return (
 		<div className="App">
 			{/* NavBar */}
-			<Nav />
+			<Nav currency={currency} setCurrency={setCurrency} />
 			{/* Home page */}
 			<Switch location={location} key={location.key}>
 				<PrivateRoute path="/admin" exact={true} component={AdminPage} />
@@ -23,7 +24,9 @@ function App() {
 					exact={true}
 					component={CreateProduct}
 				/>
-				<Route path="/" component={HomePage} exact />
+				<Route path="/" exact>
+					<HomePage currency={currency} setCurrency={setCurrency} />
+				</Route>
 				<Route path="/login" component={LoginPage} exact />
 				<Route component={NoMatch} />
 			</Switch>

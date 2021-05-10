@@ -3,21 +3,18 @@ $oxygen: "Oxygen", sans-serif;
 .login-container {
 	width: 100%;
 	height: calc(100vh - 9vh);
-	position: relative;
-	top: 9vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 	font-family: $oxygen;
-	background-color: #dedee8;
-	color: #000;
+	background-color: #f3f3f3;
+	color: #fff;
 	.login-card {
 		height: 50vh;
 		width: 50vh;
 		border-radius: 16px;
-		background-color: #8ec5fc;
-		background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+		background-color: #24202e;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -42,6 +39,23 @@ $oxygen: "Oxygen", sans-serif;
 
 			.input {
 				margin-bottom: 0.7rem;
+				color: #ffffff;
+				.MuiFormLabel-root,
+				.MuiInputLabel-root,
+				.MuiInputLabel-formControl,
+				.MuiInputLabel-animated,
+				.MuiInputLabel-outlined,
+				.Mui-required,
+				.Mui-required {
+					color: #fff;
+				}
+				.MuiInputBase-input,
+				.MuiOutlinedInput-input {
+					color: white;
+					font-size: 16px;
+					font-family: $oxygen;
+					letter-spacing: 0.5px;
+				}
 			}
 		}
 	}

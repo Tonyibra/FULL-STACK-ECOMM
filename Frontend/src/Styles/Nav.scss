@@ -68,6 +68,10 @@ $oxygen: "Oxygen", sans-serif;
 		align-items: center;
 		justify-content: space-between;
 
+		.search-bar {
+			display: flex;
+			flex-direction: row;
+		}
 		.logo {
 			margin-right: calc(4vw + 5px);
 			font-family: $oxygen;
@@ -110,5 +114,17 @@ $oxygen: "Oxygen", sans-serif;
 		text-decoration: none;
 	}
 }
-
+.currency-option {
+	.MuiSelect-root,
+	.MuiSelect-select,
+	.MuiSelect-selectMenu,
+	.MuiInputBase-input,
+	.MuiInput-input {
+		color: white;
+	}
+	padding-left: 4rem;
+	.MuiSelect-icon {
+		color: white;
+	}
+}
 @import "./HomePage";

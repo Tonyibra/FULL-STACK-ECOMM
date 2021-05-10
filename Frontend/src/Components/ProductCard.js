@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/ProductCard.scss";
 import { Button } from "@material-ui/core";
-import { stars } from "../util";
-const ProductCard = ({ product, index }) => {
+import { stars, foramtLBPRates } from "../util";
+const ProductCard = ({ product, currency }) => {
+	const [lbpRate, setLbpRate] = useState(12400);
 	stars(product.Rating);
 	console.log(stars());
 	return (
@@ -14,7 +15,11 @@ const ProductCard = ({ product, index }) => {
 							{product ? <strong>{product.productName}</strong> : ""}
 						</div>
 						<div className="product-price">
-							<span>{product.price}$</span>
+							<span>
+								{currency === "LBP"
+									? `${foramtLBPRates(`${product.price * lbpRate}`)}${currency}`
+									: `${product.price}${currency}`}
+							</span>
 						</div>
 						<div className="stars">{/* <img src={stars} alt="" /> */}</div>
 					</div>

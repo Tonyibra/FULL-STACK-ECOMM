@@ -68,6 +68,7 @@ const LoginPage = () => {
 							value={email}
 						/>
 						<TextField
+							className="input"
 							onChange={getPassword}
 							id="outlined-basic"
 							label="Password"
