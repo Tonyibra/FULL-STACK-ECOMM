@@ -40,7 +40,8 @@ label {
 }
 .product-desc {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	justify-content: space-evenly;
 	align-items: center;
 	textarea {
 		resize: none;
@@ -54,4 +55,41 @@ label {
 	display: flex;
 	justify-content: center;
 	margin-top: 36px;
+}
+.open-img {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 2rem;
+
+	.upload-box {
+		font-size: 16px;
+		background: white;
+		border-radius: 50px;
+
+		width: 350px;
+		outline: none;
+	}
+}
+::-webkit-file-upload-button {
+	color: white;
+	background: #24202e;
+	padding: 20px;
+	border: none;
+	border-radius: 50px;
+
+	outline: none;
+	transition: all 250ms ease-in-out;
+}
+::-webkit-file-upload-button:hover {
+	background: #fff;
+	cursor: pointer;
+	color: #24202e;
+	border: 1px solid #24202e;
+}
+
+.label-img {
+	font-size: 22px;
+	font-family: $oxygen;
+	margin-bottom: 1.2rem;
 }

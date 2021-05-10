@@ -3,7 +3,8 @@ $oxygen: "Oxygen", sans-serif;
 .product-list-flex {
 	display: flex;
 	flex-direction: row;
-	//	justify-content: space-between;
+	justify-content: center;
+	align-items: center;
 	flex-wrap: wrap;
 	flex-basis: 30%;
 
@@ -16,4 +17,12 @@ $oxygen: "Oxygen", sans-serif;
 		padding-top: calc(3vw + 15px);
 		font-family: $oxygen;
 	}
+}
+.loading {
+	width: 100%;
+	min-height: 15vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }

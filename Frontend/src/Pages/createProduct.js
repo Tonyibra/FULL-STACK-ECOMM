@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import "../Styles/CreateProduct.scss";
 import { uploadProducts, uploadImage } from "../Redux/actions/UploadProducts";
+
 import axios from "axios";
 const CreateProduct = () => {
 	const selector = useSelector((state) => state.IMGS);
@@ -17,12 +18,13 @@ const CreateProduct = () => {
 	const [description, setDescription] = useState("");
 	const [countInStock, setCountInStock] = useState("10");
 	const [file, setFile] = useState("");
-	const [filename, setFilename] = useState("Choose File");
-	const [Image, setImage] = useState(" ");
+	const [filename, setFilename] = useState("Upload Product Image");
+	const [Image, setImage] = useState("");
 
 	const onChange = (e) => {
 		setFile(e.target.files[0]);
 		setFilename(e.target.files[0].name);
+		setImage(`/imgs/${e.target.files[0].name}`);
 	};
 
 	const setProductName = (e) => {
@@ -46,43 +48,48 @@ const CreateProduct = () => {
 	const setDescriptionFunction = (e) => {
 		setDescription(e.target.value);
 	};
+	const reset = () => {
+		setProduct(" ");
+		setBrand(" ");
+		setCategory(" ");
+		setPrice(" ");
+		setStars(" ");
+		setRatingCount(" ");
+		setDescription(" ");
+	};
 	const uploadingImg = () => {
 		try {
 			dispatch(uploadImage(file));
+			console.log("trying to add img");
 		} catch (err) {
 			console.log(err);
 		}
 	};
 	const submitData = (e) => {
 		e.preventDefault();
-
 		try {
 			uploadingImg();
-
-			setImage(`/imgs/${filename}`);
 		} catch (err) {
 			console.log(err);
 		}
 		console.log(Image);
-		if (Image === "" || Image === " ") {
-			setImage(`/imgs/${filename}`);
+		if (Image === " ") {
+			return;
 		} else {
-			console.log("Uploading...");
+			dispatch(
+				uploadProducts(
+					product,
+					Image,
+					description,
+					category,
+					brand,
+					stars,
+					ratingCount,
+					countInStock,
+					price
+				)
+			);
 		}
-
-		dispatch(
-			uploadProducts(
-				product,
-				Image,
-				description,
-				category,
-				brand,
-				stars,
-				ratingCount,
-				countInStock,
-				price
-			)
-		);
 	};
 
 	return (
@@ -162,8 +169,19 @@ const CreateProduct = () => {
 				</div>
 			</div>
 			<div className="product-desc">
-				<input onChange={onChange} type="file" id="customFile" />
-				<label htmlFor="customFile">{filename}</label>
+				<div className="open-img">
+					<div className="label-img">
+						<label htmlFor="customFile">{filename}</label>
+					</div>
+					<div className="input-img">
+						<input
+							className="upload-box"
+							onChange={onChange}
+							type="file"
+							id="customFile"
+						/>
+					</div>
+				</div>
 				<div className="description">
 					<label>Description</label>
 					<textarea

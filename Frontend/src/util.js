@@ -1,6 +1,5 @@
-import { useDispatch } from "react-redux";
 import { getTokenInfo } from "./Redux/actions/userActions";
-
+import OneStar from "./reviews/one.png";
 const parseJwt = (token) => {
 	try {
 		return JSON.parse(atob(token.split(".")[1]));
@@ -21,4 +20,11 @@ export const getTokenData = (id) => async (dispatch) => {
 	} catch (error) {
 		console.log("Error");
 	}
+};
+
+export const stars = (rating) => {
+	//convert Ratings to stars
+};
+export const FeaturedProducts = (products) => {
+	return Object.keys(products).length;
 };

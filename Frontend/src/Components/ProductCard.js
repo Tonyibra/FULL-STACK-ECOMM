@@ -1,8 +1,10 @@
 import React from "react";
 import "../Styles/ProductCard.scss";
 import { Button } from "@material-ui/core";
-
+import { stars } from "../util";
 const ProductCard = ({ product, index }) => {
+	stars(product.Rating);
+	console.log(stars());
 	return (
 		<>
 			<div className="card">
@@ -14,7 +16,7 @@ const ProductCard = ({ product, index }) => {
 						<div className="product-price">
 							<span>{product.price}$</span>
 						</div>
-						<div className="stars">{product.Rating}</div>
+						<div className="stars">{/* <img src={stars} alt="" /> */}</div>
 					</div>
 					<div className="card-left">
 						<img src={product.Image} alt="" />

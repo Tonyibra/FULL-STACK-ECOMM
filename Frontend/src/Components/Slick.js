@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "../Styles/Slider.scss";
+import { useSelector } from "react-redux";
+import { FeaturedProducts } from "../util";
+import Loading from "./Loading";
+import SlickList from "./SlickList";
 
 const Slick = () => {
+	const [currency, setCurrency] = useState("$");
+	const selector = useSelector((state) => state.ProductsData.Products);
+	const length = Object.keys(selector).length - 1;
 	const settings = {
 		dots: true,
 		infinite: true,
@@ -14,8 +21,56 @@ const Slick = () => {
 
 	return (
 		<div className="slick-container">
-			<Slider className="slider" {...settings}>
-				<div className="box">
+			{selector && selector.length > 0 ? (
+				<div className="slick-container">
+					<Slider className="slider" {...settings}>
+						<div className="box">
+							<div className="data">
+								<div className="img">
+									<img
+										src={selector[length].Image}
+										alt={selector[length].productName}
+									/>
+								</div>
+								<div className="right-part">
+									<div className="title">{selector[length].productName}</div>
+									<div className="price">
+										<span className="slick-price">
+											Price :{`${selector[length].price}${currency}`}
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className="box">
+							<div className="data">
+								<div className="img">
+									<img
+										src={selector[length - 1].Image}
+										alt={selector[length - 1].productName}
+									/>
+								</div>
+								<div className="right-part">
+									<div className="title">
+										{selector[length - 1].productName}
+									</div>
+									<div className="price">
+										<span className="slick-price">
+											Price : {`${selector[length - 1].price}${currency}`}
+										</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</Slider>
+				</div>
+			) : (
+				<div className="loading">
+					<Loading />
+				</div>
+			)}
+
+			{/* <div className="box">
 					<div className="data">
 						<div className="title">
 							Iphone 12 <span className="slick-price">(999$)</span>
@@ -34,18 +89,7 @@ const Slick = () => {
 							<img src="/imgs/iphone-12.png" alt="" />
 						</div>
 					</div>
-				</div>
-				<div className="box">
-					<div className="data">
-						<div className="title">
-							Iphone 12 <span className="slick-price">(999$)</span>
-						</div>
-						<div className="img">
-							<img src="/imgs/iphone-12.png" alt="" />
-						</div>
-					</div>
-				</div>
-			</Slider>
+				</div> */}
 		</div>
 	);
 };

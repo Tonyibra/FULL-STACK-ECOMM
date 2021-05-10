@@ -35,7 +35,9 @@ $oxygen: "Oxygen", sans-serif;
 			box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
 			font-family: $oxygen;
-
+			.table-content tbody tr:nth-child(even) {
+				background-color: #f3f3f3;
+			}
 			thead tr {
 				background-color: #24202e;
 				color: #fff;
@@ -49,9 +51,7 @@ $oxygen: "Oxygen", sans-serif;
 			tbody tr {
 				border-bottom: 1px solid #dddddd;
 			}
-			tbody tr:nth-of-type(even) {
-				background-color: #f3f3f3;
-			}
+
 			tbody tr:last-of-type {
 				border-bottom: 2px solid #24202e;
 			}

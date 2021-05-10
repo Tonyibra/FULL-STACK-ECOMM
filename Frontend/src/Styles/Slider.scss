@@ -26,13 +26,19 @@
 	cursor: pointer;
 
 	.slick-list {
-		overflow: visible;
+		overflow: hidden;
 	}
 	ul li button {
 		&:before {
 			font-size: 10px;
 			color: rgb(150, 158, 171);
 		}
+	}
+	.slick-prev:before {
+		color: #24202e;
+	}
+	.slick-next:before {
+		color: #24202e;
 	}
 	button {
 		z-index: 1;
@@ -48,17 +54,15 @@
 
 		.data {
 			display: flex;
-			flex-direction: column;
-			justify-content: center;
+			flex-direction: row;
+			justify-content: space-evenly;
 			align-items: center;
 			min-height: 100%;
 
 			img {
-				width: 300px;
-				height: 300px;
-				object-fit: contain;
-				background-color: white;
-				border-radius: 50%;
+				width: 350px;
+				height: 350px;
+				object-fit: cover;
 			}
 			.title {
 				color: white;
@@ -66,7 +70,24 @@
 				font-size: 32px;
 				line-height: 24px;
 				letter-spacing: 2px;
+				padding-left: 0.5rem;
 			}
 		}
+	}
+	.right-part {
+		display: flex;
+		flex-direction: column;
+		text-align: start;
+
+		.slick-price {
+			color: white;
+			margin-bottom: 25px;
+			font-size: 20px;
+			line-height: 24px;
+			letter-spacing: 0.5px;
+		}
+	}
+	.price span {
+		padding-left: 0.5rem;
 	}
 }
