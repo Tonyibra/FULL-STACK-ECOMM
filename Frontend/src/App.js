@@ -8,6 +8,7 @@ import AdminPage from "./Pages/AdminPage";
 import PrivateRoute from "./routing/PrivateRoute ";
 import CreateProduct from "./Pages/CreateProduct";
 import { notFoundRoute } from "./util";
+import ProductDetails from "./Pages/ProductDetails";
 function App() {
 	const [currency, setCurrency] = useState("USD");
 	const location = useLocation();
@@ -26,6 +27,9 @@ function App() {
 				/>
 				<Route path="/" exact>
 					<HomePage currency={currency} setCurrency={setCurrency} />
+				</Route>
+				<Route path="/product/:id" exact>
+					<ProductDetails />
 				</Route>
 				<Route path="/login" component={LoginPage} exact />
 				<Route component={NoMatch} />

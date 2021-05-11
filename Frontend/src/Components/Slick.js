@@ -5,12 +5,11 @@ import { useSelector } from "react-redux";
 import { FeaturedProducts, foramtLBPRates } from "../util";
 import Loading from "./Loading";
 import SlickList from "./SlickList";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Slick = ({ currency, setCurrency, lbpRate }) => {
 	const selector = useSelector((state) => state.ProductsData.Products);
 	const length = Object.keys(selector).length - 1;
-	const history = useHistory();
 
 	const settings = {
 		dots: true,
@@ -46,9 +45,7 @@ const Slick = ({ currency, setCurrency, lbpRate }) => {
 													  )}${currency}`
 													: `${selector[length].price}${currency}`}
 											</span>
-											<div className="btn">
-												<button className="btn-11">Add to Cart</button>
-											</div>
+											<div className="btn-flex">{/* btn */}</div>
 										</div>
 									</div>
 								</div>

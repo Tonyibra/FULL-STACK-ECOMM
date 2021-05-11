@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { productsReducer } from "./ProductsReducer";
+import { productsReducer, productsByIDReducer } from "./ProductsReducer";
 import { loginReducer } from "./LoginReducer.js";
 import { tokeninfo } from "./userReducer";
 import { createProductReducer, uploadImageReducer } from "./UploadReducer";
@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
 	tokenInfo: tokeninfo,
 	uploads: createProductReducer,
 	IMGS: uploadImageReducer,
+	ProductsByID: productsByIDReducer,
 });
 
 export default rootReducer;

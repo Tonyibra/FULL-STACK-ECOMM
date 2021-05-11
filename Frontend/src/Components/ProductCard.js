@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import "../Styles/ProductCard.scss";
 import { Button } from "@material-ui/core";
 import { stars, foramtLBPRates } from "../util";
+import { Link } from "react-router-dom";
 const ProductCard = ({ product, currency, lbpRate }) => {
 	stars(product.Rating);
 	console.log(stars());
 	return (
 		<>
 			<div className="card">
-				<div className="card-content">
+				<Link to={`/product/${product._id}`} className="card-content">
 					<div className="card-right">
 						<div className="product-name">
 							{product ? <strong>{product.productName}</strong> : ""}
@@ -25,12 +26,14 @@ const ProductCard = ({ product, currency, lbpRate }) => {
 					<div className="card-left">
 						<img src={product.Image} alt="" />
 					</div>
-				</div>
+				</Link>
 				<div className="card-buttons">
 					<div className="addtocart">
-						<Button className="btn" variant="outlined" color="default">
-							Add to Cart
-						</Button>
+						<Link to="/cart">
+							<Button className="btn" variant="outlined" color="default">
+								Add to Cart
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</div>

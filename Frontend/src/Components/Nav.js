@@ -83,7 +83,7 @@ const Nav = ({ currency, setCurrency }) => {
 								USD
 							</MenuItem>
 							<MenuItem className="menu-item" value={"LBP"}>
-								Lebanese Pound
+								LBP
 							</MenuItem>
 						</Select>
 					</div>

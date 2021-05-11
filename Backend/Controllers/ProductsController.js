@@ -11,7 +11,19 @@ exports.getPorductData = async (req, res, next) => {
 	}
 	next();
 };
-
+exports.getProductByID = async (req, res, next) => {
+	const id = req.params.id;
+	try {
+		const product = await Product.findById(id);
+		if (product) {
+			res.json(product);
+		} else {
+			res.json("ID NOT VALID");
+		}
+	} catch (error) {
+		console.log({ errorMessage: errorMessage.error });
+	}
+};
 exports.uploadImage = (req, res) => {
 	if (req.files === null) return;
 	const image = req.files.file;

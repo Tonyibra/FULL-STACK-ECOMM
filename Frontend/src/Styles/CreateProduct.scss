@@ -7,6 +7,8 @@ $oxygen: "Oxygen", sans-serif;
 .addProduct-container {
 	background-color: rgba(221, 221, 221, 0.2);
 	height: calc(100vh - 9vh);
+	position: relative;
+	top: 9vh;
 	
 	.title {
 		height: 10vh;
