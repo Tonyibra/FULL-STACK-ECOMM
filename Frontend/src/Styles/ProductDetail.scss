@@ -1,5 +1,53 @@
+$oxygen: "Oxygen", sans-serif;
+
 .productdetails-container{
     position: relative;
     top: 9vh;
     padding: calc(3.5vw + 5px);
+    background: #fafafa;
+    height: calc(100vh - 9vh);
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .right-part{
+        display: flex;
+        flex-direction: column;
+        border-right: 4px solid #f3f3f3;
+        flex: 1;
+        .content{
+            .img{
+                img{
+                    width: 400px;
+                    height: 400px;
+                    object-fit: contain;
+
+                    }
+            }
+        }
+        .back-btn{
+            margin-bottom: 2rem;
+        }
+        
+    }
+
+    .left-part{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .content{
+            padding: calc(2.5vw + 5px);
+            display: flex;
+            flex-direction: column;
+            strong{
+                font-family: $oxygen;
+                font-size: 32px;
+                letter-spacing: 1px;
+                color: #0e0e0e;
+                font-weight: 300;
+                padding-bottom: 2rem;
+                
+            }
+        }
+    }
 }

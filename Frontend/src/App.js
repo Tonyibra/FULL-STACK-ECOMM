@@ -11,6 +11,7 @@ import { notFoundRoute } from "./util";
 import ProductDetails from "./Pages/ProductDetails";
 function App() {
 	const [currency, setCurrency] = useState("USD");
+	const [lbpRate, setLbpRate] = useState(12700);
 	const location = useLocation();
 	const NoMatch = ({ location }) => <h3>404 PAGE NOT FOUND</h3>;
 	return (
@@ -26,10 +27,14 @@ function App() {
 					component={CreateProduct}
 				/>
 				<Route path="/" exact>
-					<HomePage currency={currency} setCurrency={setCurrency} />
+					<HomePage
+						lbpRate={lbpRate}
+						currency={currency}
+						setCurrency={setCurrency}
+					/>
 				</Route>
 				<Route path="/product/:id" exact>
-					<ProductDetails />
+					<ProductDetails currency={currency} lbpRate={lbpRate} />
 				</Route>
 				<Route path="/login" component={LoginPage} exact />
 				<Route component={NoMatch} />

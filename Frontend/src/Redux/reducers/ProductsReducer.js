@@ -25,7 +25,7 @@ export const productsByIDReducer = (state = initState, action) => {
 		case GET_PRODUCT_ID_REQUEST:
 			return { ...state };
 		case GET_PRODUCT_ID_SUCCESS:
-			return { ...state, ProductByID: action.payload };
+			return { ProductByID: action.payload };
 		case GET_PRODUCT_ID_FAIL:
 			return { Products: action.payload };
 

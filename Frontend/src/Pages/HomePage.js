@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../Redux/actions/ProductActions";
 import { loginActions } from "../Redux/actions/LoginActions";
 import { FeaturedProducts } from "../util";
-const HomePage = ({ currency, setCurrency }) => {
+const HomePage = ({ currency, setCurrency, lbpRate }) => {
 	const selector = useSelector((state) => state.ProductsData.Products);
 	const dispatch = useDispatch();
-	const [lbpRate, setLbpRate] = useState(12700);
+
 	useEffect(() => {
 		dispatch(getProducts());
 	}, []);
