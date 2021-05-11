@@ -9,6 +9,8 @@ $oxygen: "Oxygen", sans-serif;
 	text-align: center;
 	font-family: $oxygen;
 	background-color: #f3f3f3;
+	overflow-x: hidden;
+	top: 9vh;
 	color: #fff;
 	.login-card {
 		height: 50vh;

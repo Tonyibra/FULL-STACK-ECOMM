@@ -1,7 +1,13 @@
 $oxygen: "Oxygen", sans-serif;
+
+.admin-container{
+	position: relative;
+	top: 9vh;
+}
 .addProduct-container {
 	background-color: rgba(221, 221, 221, 0.2);
 	height: calc(100vh - 9vh);
+	
 	.title {
 		height: 10vh;
 		display: flex;

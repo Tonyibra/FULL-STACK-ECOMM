@@ -5,10 +5,13 @@ import { useSelector } from "react-redux";
 import { FeaturedProducts, foramtLBPRates } from "../util";
 import Loading from "./Loading";
 import SlickList from "./SlickList";
+import { useHistory, Link } from "react-router-dom";
 
 const Slick = ({ currency, setCurrency, lbpRate }) => {
 	const selector = useSelector((state) => state.ProductsData.Products);
 	const length = Object.keys(selector).length - 1;
+	const history = useHistory();
+
 	const settings = {
 		dots: true,
 		infinite: true,
@@ -23,54 +26,61 @@ const Slick = ({ currency, setCurrency, lbpRate }) => {
 			{selector && selector.length > 0 ? (
 				<div className="slick-container">
 					<Slider className="slider" {...settings}>
-						<div className="box">
-							<div className="data">
-								<div className="img">
-									<img
-										src={selector[length].Image}
-										alt={selector[length].productName}
-									/>
-								</div>
-								<div className="right-part">
-									<div className="title">{selector[length].productName}</div>
-									<div className="price">
-										<span className="slick-price">
-											Price :
-											{currency === "LBP"
-												? `${foramtLBPRates(
-														`${selector[length].price * lbpRate}`
-												  )}${currency}`
-												: `${selector[length].price}${currency}`}
-										</span>
+						<Link to={`/product/${selector[length]._id}`}>
+							<div className="box">
+								<div className="data">
+									<div className="img">
+										<img
+											src={selector[length].Image}
+											alt={selector[length].productName}
+										/>
+									</div>
+									<div className="right-part">
+										<div className="title">{selector[length].productName}</div>
+										<div className="price">
+											<span className="slick-price">
+												Price :
+												{currency === "LBP"
+													? `${foramtLBPRates(
+															`${selector[length].price * lbpRate}`
+													  )}${currency}`
+													: `${selector[length].price}${currency}`}
+											</span>
+											<div className="btn">
+												<button className="btn-11">Add to Cart</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div className="box">
-							<div className="data">
-								<div className="img">
-									<img
-										src={selector[length - 1].Image}
-										alt={selector[length - 1].productName}
-									/>
-								</div>
-								<div className="right-part">
-									<div className="title">
-										{selector[length - 1].productName}
+						</Link>
+						<Link to={`/product/${selector[length - 1]._id}`}>
+							<div className="box">
+								<div className="data">
+									<div className="img">
+										<img
+											src={selector[length - 1].Image}
+											alt={selector[length - 1].productName}
+										/>
 									</div>
-									<div className="price">
-										<span className="slick-price">
-											Price :
-											{currency === "LBP"
-												? `${foramtLBPRates(
-														`${selector[length - 1].price * lbpRate}`
-												  )}${currency}`
-												: `${selector[length - 1].price}${currency}`}
-										</span>
+									<div className="right-part">
+										<div className="title">
+											{selector[length - 1].productName}
+										</div>
+										<div className="price">
+											<span className="slick-price">
+												Price :
+												{currency === "LBP"
+													? `${foramtLBPRates(
+															`${selector[length - 1].price * lbpRate}`
+													  )}${currency}`
+													: `${selector[length - 1].price}${currency}`}
+											</span>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</Link>
 					</Slider>
 				</div>
 			) : (

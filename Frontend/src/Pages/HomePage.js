@@ -9,7 +9,7 @@ import { FeaturedProducts } from "../util";
 const HomePage = ({ currency, setCurrency }) => {
 	const selector = useSelector((state) => state.ProductsData.Products);
 	const dispatch = useDispatch();
-	const [lbpRate, setLbpRate] = useState(12400);
+	const [lbpRate, setLbpRate] = useState(12700);
 	useEffect(() => {
 		dispatch(getProducts());
 	}, []);
